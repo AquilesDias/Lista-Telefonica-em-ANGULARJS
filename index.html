@@ -4,25 +4,30 @@
 <head>
 
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!--IMPORTANDO AS LIB -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-  <script src="angular-messages.min.js"></script>
+  <script src="lib/angular-messages.min.js"></script>
 
+  <!--IMPORTANDO O  CSS-->
+  <link rel="stylesheet" href="lista-telefonica.css" class="rel">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!--IMPORTANDO O APP.JS  -->
+  <script src="js/app.js"></script>
 
-  <link rel="stylesheet" href="lista-telefonica.css" class="rel">
+  <!--IMPORTANDO O listaTelefonicaCtrl.JS -->
+  <script src="js\controllers\listaTelefonicaCtrl.js"></script>
 
-  <script src="app.js"></script>
-
+  <!-- TITULO-->
   <title>Lista Telefonica</title>
+
 </head>
 
 <body ng-controller="listaTelefonicaCtrl">
   <div class="jumbotron">
-    <h3>{{app}}</h3>
+    <h3>{{ app }}</h3>
 
     <input class="form-control" text="" ng-model="criterioDeBusca" placeholder="O que você está buscando?">
 
@@ -38,10 +43,10 @@
       <tr ng-class="{'selecionado negrito': contato.selecionado}"
         ng-repeat="contato in contatos| filter: {nome:criterioDeBusca} | orderBy: 'nome'">
         <td><input type="checkbox" ng-model="contato.selecionado"></td>
-        <td>{{contato.nome}}</td>
-        <td>{{contato.telefone}}</td>
-        <td>{{contato.operadora.nome}}</td>
-        <td>{{contato.data | date: 'dd/MM/yyyy HH:mm'}}</td>
+        <td>{{ contato.nome }}</td>
+        <td>{{ contato.telefone }}</td>
+        <td>{{ contato.operadora.nome }}</td>
+        <td>{{ contato.data | date: 'dd/MM/yyyy HH:mm'}}</td>
       </tr>
 
     </table>
@@ -92,23 +97,11 @@
     <button ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)"
       class="btn btn-danger btn-block">Apagar Contato</button>
 
-  </div>
-
-  <div style="text-align: right;">
     <p>
-    <div>
-      Desenvolvido por Aquiles Dias </br>
-      <a href="https://github.com/AquilesDias">github</a>
-    </div>
-
+    <div ng-include="'view/footer.html'"></div>
     </p>
+
   </div>
-
-
-
-  <!-- TAG NÃO EM FUNCIONAMENTO POR CAUSA DO NAVEGADOR
-    <div ng-include="'footer.html'"></div>
-  -->
 
 </body>
 

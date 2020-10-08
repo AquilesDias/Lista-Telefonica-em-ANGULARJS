@@ -1,5 +1,3 @@
-angular.module('listaTelefonica', ['ngMessages']); // Este colchete é para injeção de novos modulos.
-
 angular.module('listaTelefonica')
   .controller('listaTelefonicaCtrl', function ($scope) {
 
@@ -37,6 +35,7 @@ angular.module('listaTelefonica')
         return contato.selecionado;
       });
     };
+
 
 
   });
